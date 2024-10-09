@@ -1,5 +1,26 @@
 @if(isLoading){
 <p>Loading...</p>
 }@else{
-<p>user works!</p>
+<div class="d-flex flex-row justify-content-between mb-3">
+  <h3>User List</h3>
+  <a class="btn btn-primary" routerLink="/user/add">Add User</a>
+</div>
+<table class="table">
+  <thead class="table-light">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(user of users; track user.id){
+    <tr>
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+    }
+  </tbody>
+</table>
 }
