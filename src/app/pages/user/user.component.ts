@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -14,6 +14,21 @@ export class UserComponent {
 
   isLoading: boolean = true;
   users: any = [];
+
+  constructor(private router: Router) {}
+
+  onEdit(id: number) {
+    this.router.navigate([`/user/update/${id}`]);
+  }
+
+  onDelete(id: number) {
+    if (confirm('Are you sure?')) {
+      this.userService.deleteUser(id).subscribe({
+        next: () => alert('User delete successfully'),
+        error: (error) => console.log(error),
+      });
+    }
+  }
 
   ngOnInit() {
     this.userService.getAllUser().subscribe({

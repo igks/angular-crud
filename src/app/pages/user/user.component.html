@@ -11,6 +11,7 @@
       <th>ID</th>
       <th>Name</th>
       <th>Email</th>
+      <th>Options</th>
     </tr>
   </thead>
   <tbody>
@@ -19,6 +20,10 @@
       <td>{{user.id}}</td>
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>
+      <td>
+        <span class="badge text-bg-warning mx-1" role="button" (click)="onEdit(user.id)">Edit</span>
+        <span class="badge text-bg-danger mx-1" role="button" (click)="onDelete(user.id)">Delete</span>
+      </td>
     </tr>
     }
   </tbody>
